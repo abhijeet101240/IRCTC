@@ -1,0 +1,27 @@
+[
+  {
+    "user_id":"1",
+    "name":"Abhijeet",
+    "hashedPassword": "abcd123",
+    "tickets_booked": [
+      {
+        "source": "bhusawal",
+        "destination": "mumbai",
+        "date_of_travel": "2025-12-01T18:30:00Z",
+        "train": {
+          "train_id": "basc",
+          "train_no": 12345,
+          "seats": [
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0]
+          ],
+          "stations": {
+            "Banglore":
+          }
+        }
+      }
+    ]
+  }
+]
