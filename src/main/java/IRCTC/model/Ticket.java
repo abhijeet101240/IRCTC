@@ -96,6 +96,6 @@ public class Ticket {
     }
 
     public String getTicketInfo(){
-        return String.format("Train ID: %s Train No: %s", ticketId, userId, source, destination);
+        return String.format("Train ID: %s Train No: %s", ticketId, userId, source, destination, dateOfTravelling);
     }
 }

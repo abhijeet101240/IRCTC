@@ -1,5 +1,8 @@
 package IRCTC.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -9,6 +12,11 @@ import java.util.List;
 @Data
 @EqualsAndHashCode
 @ToString
+@JsonNaming(PropertyNamingStrategy.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
+/*//These two annotations are from the Jackson library in Java and are commonly used for mapping
+JSON to Java objects and vice versa. Here's a simple explanation of each:*/
+
 public class User {
 
     private String name;
@@ -81,5 +89,12 @@ public class User {
                 ", ticketsBooked=" + ticketsBooked +
                 ", userID='" + userID + '\'' +
                 '}';
+    }
+
+   public void printTicket(){
+
+        for (int i = 0 ; i<ticketsBooked.size();i++){
+            System.out.println(ticketsBooked.get(i).getTicketInfo());
+        }
     }
 }
