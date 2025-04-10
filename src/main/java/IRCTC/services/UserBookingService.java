@@ -28,10 +28,10 @@ public class UserBookingService {
     }
 
 
-    /*public boolean loginUser(){
+  /* *public boolean loginUser(){
 
         userList.stream().filter(user1 ->{
-            return user1
+            return user1.getName().equals(user.getName())
         } )
 
     }*/
