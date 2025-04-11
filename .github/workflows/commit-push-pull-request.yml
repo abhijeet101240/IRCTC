@@ -1,24 +1,23 @@
-name: Commit, Push, Pull, and PR Workflow
+name: Commit, Push, and PR Workflow
 
 on:
-  push:             # Triggers on push (includes commits)
+  push:             # Triggers on any push (commit)
     branches:
-      - '**'        # All branches
-  pull_request:     # Triggers when a PR is opened or synchronized (updated)
+      - '**'        # all branches
+  pull_request:     # Triggers on PR creation, update, reopen
     branches:
       - '**'
-  pull:             # GitHub Actions does NOT support "pull" as a trigger
-    # This line is here just for info — GitHub has no native `pull` trigger.
 
 jobs:
   on-commit-push-pr:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Print event type
-        run: echo "This workflow was triggered by: ${{ github.event_name }}"
+      - name: Show event name
+        run: echo "Triggered by: ${{ github.event_name }}"
 
-      - name: List files
+      - name: List files in the repo
         run: ls -al
