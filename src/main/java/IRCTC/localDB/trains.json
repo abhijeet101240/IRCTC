@@ -1,6 +1,6 @@
 [
   {
-    "train_id": "basc",
+    "train_id": "bacs",
     "train_no": 12345,
     "seats": [
       [0,0,0,0,0,0],
@@ -8,35 +8,35 @@
       [0,0,0,0,0,0],
       [0,0,0,0,0,0]
     ],
-    "stations_times": {
-      "Bhusawal" :"13:00:00",
-      "Jalgaon": "13:50:00",
-      "Nashik": "15:00:00"
+    "station_times": {
+      "bangalore": "13:50:00",
+      "jaipur": "13:50:00",
+      "delhi": "13:50:00"
     },
     "stations": [
-      "bhusawal",
-      "jalgaon",
-      "nashik"
+      "bangalore",
+      "jaipur",
+      "delhi"
     ]
   },
   {
-    "train_id": "sdad",
-    "train_no": 12223,
+    "train_id": "bacs",
+    "train_no": 12345,
     "seats": [
       [0,0,0,0,0,0],
       [0,0,0,0,0,0],
       [0,0,0,0,0,0],
       [0,0,0,0,0,0]
     ],
-    "stations_times": {
-      "Bhusawal" :"12:00:00",
-      "Jalgaon": "12:50:00",
-      "Nashik": "14:00:00"
+    "station_times": {
+      "bangalore": "13:50:00",
+      "jaipur": "13:50:00",
+      "delhi": "13:50:00"
     },
     "stations": [
-      "bhusawal",
-      "jalgaon",
-      "nashik"
+      "bangalore",
+      "jaipur",
+      "delhi"
     ]
   }
 ]

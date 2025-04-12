@@ -22,7 +22,7 @@ public class TrainService {
 
     private final static String  TRAIN_PATH = "src/main/java/IRCTC/localDB/trains.json";
 
-    private TrainService() throws IOException {
+    public TrainService() throws IOException {
 
         File trains = new File(TRAIN_PATH);
 
@@ -76,8 +76,6 @@ public class TrainService {
         } catch (IOException e){
             e.printStackTrace();
         }
-
-
     }
 
 
