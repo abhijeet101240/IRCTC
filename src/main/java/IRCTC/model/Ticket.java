@@ -1,6 +1,9 @@
 package IRCTC.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.*;
 import org.springframework.ws.transport.TransportInputStream;
 
@@ -9,6 +12,8 @@ import java.util.Date;
 @Data
 @ToString
 @EqualsAndHashCode
+@JsonNaming(PropertyNamingStrategy.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Ticket {
 
     private String ticketId;

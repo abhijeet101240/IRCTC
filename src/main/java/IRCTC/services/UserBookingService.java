@@ -1,5 +1,6 @@
 package IRCTC.services;
 
+import IRCTC.model.Train;
 import IRCTC.model.User;
 import IRCTC.util.UserServiceUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -8,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -35,9 +37,15 @@ public class UserBookingService {
     }
 
     private void loadUserFromListLD() throws IOException {
+        File file = new File(USER_PATH);
 
-        objectMapper.readValue(new File(USER_PATH), new TypeReference<User>() {});
-    }
+        if (file.exists() && file.length() > 0) {
+            userList = objectMapper.readValue(new File(USER_PATH), new TypeReference<List<User>>() {
+            });
+        }else {
+            userList = new ArrayList<>();
+        }
+        }
 
 
     public boolean loginUser() {
@@ -81,6 +89,47 @@ public class UserBookingService {
 
     }
 
+    public  List<List<Integer>> fetchSeats(Train train){
+        if (train == null){
+            System.out.println("train is null");
+            return null;
+        }
+
+        List<List<Integer>> seats = train.getSeats();
+
+        if (seats == null){
+            System.out.println("Seats in train" + train.getTrainId() + " are null");
+            return null;
+        }
+        return seats;
+    }
+
+    public Boolean bookTrainSeats(Train train, int row, int seat){
+
+        try {
+            TrainService trainService = new TrainService();
+            List<List<Integer>> seats = train.getSeats();
+
+            if (row >= 0 && row < seats.size() && seat >= 0 && seat < seats.get(row).size()){
+                if (seats.get(row).get(seat) == 0){
+                    seats.get(row).set(seat,1);
+                    train.setSeats(seats);
+
+                    trainService.addTrains(train);
+                    return true;
+
+                }else {
+                    return false;
+                }
+            }else {
+                return false;
+            }
+
+        }catch (IOException e){
+                return Boolean.FALSE;
+        }
+    }
+
     public boolean cancelBooking(String ticketID){
 
         Scanner sc = new Scanner(System.in);
@@ -110,8 +159,15 @@ public class UserBookingService {
         }
     }
 
-   /* public List<List> getTrain(String source, String Destination){
+   public List<Train> getTrain(String source, String Destination){
 
-    }*/
+        try {
+            TrainService trainService = new TrainService();
+            trainService.searchTrains(source,Destination);
+        }catch (IOException ae){
+            ae.printStackTrace();
+        }
+       return new ArrayList<>();
+    }
 
 }
